@@ -21,6 +21,22 @@ public class BusinessController {
      *
      * @return
      */
+    @RequestMapping(value = "/purchase/init", produces = "application/json")
+    public String initData() {
+        try {
+            businessService.initData();
+        } catch (Exception exx) {
+            return exx.getMessage();
+        }
+        return "全局事务提交";
+    }
+
+
+    /**
+     * 购买下单，模拟全局事务提交
+     *
+     * @return
+     */
     @RequestMapping(value = "/purchase/commit", produces = "application/json")
     public String purchaseCommit() {
         try {
